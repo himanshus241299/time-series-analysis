@@ -15,8 +15,9 @@ st.markdown(
 
 st.subheader("*Upload Data*")
 
-st.caption("File Format")
-sample_data = pd.read_excel("data/sample_data.xlsx")
+st.caption("Please Upload Data in following format")
+sample_data = pd.read_excel("data/input/sample_mev_data.xlsx")
+st.dataframe(sample_data, use_container_width=True)
 
 uploaded_file = st.file_uploader(
     label="Upload Data", type=["csv", "xlsx"], label_visibility="hidden"
