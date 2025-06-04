@@ -6,6 +6,9 @@ import os
 
 # df = pd.read_excel("sample_mev_data.xlsx")
 
+# summary_df=summary(df)
+# list(summary_df['Macro Variable']) 
+
 
 def summary(df):
     summary_df = df.transpose().reset_index()

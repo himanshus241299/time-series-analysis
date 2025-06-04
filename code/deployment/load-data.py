@@ -55,6 +55,9 @@ if st.session_state["sample_data_button"]:
         },
         hide_index=True,
     )
+    
+    st.session_state['data'] = sample_data
+    st.session_state['summary_data'] = summary_df
 
     if st.button("Exploratory Data Analysis"):
         st.switch_page("eda.py")
@@ -90,6 +93,10 @@ if st.session_state["upload_data_button"]:
             },
             hide_index=True,
         )
+        
+        st.session_state['data'] = df
+        st.session_state['summary_data'] = summary_df
+
 
         if st.button("Exploratory Data Analysis"):
             st.switch_page("eda.py")
