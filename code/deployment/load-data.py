@@ -19,7 +19,6 @@ if "sample_data_button" not in st.session_state:
 
 if "button3" not in st.session_state:
     st.session_state["button3"] = False
-uploaded_file = None
 
 if st.button("Use Sample Data"):
     st.session_state["sample_data_button"] = not st.session_state["sample_data_button"]
@@ -92,8 +91,8 @@ if st.session_state["upload_data_button"]:
             hide_index=True,
         )
 
-    if st.button("Exploratory Data Analysis"):
-        st.switch_page("eda.py")
+        if st.button("Exploratory Data Analysis"):
+            st.switch_page("eda.py")
 
 
 # Print the session state to make it easier to see what's happening
