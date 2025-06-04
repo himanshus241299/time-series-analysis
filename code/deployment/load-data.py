@@ -8,6 +8,7 @@ st.subheader("*Data Format*")
 
 st.caption("Please Upload Data in following format")
 sample_data = pd.read_excel("data/input/sample_mev_data.xlsx")
+sample_data = sample_data.astype("string")
 st.dataframe(sample_data, hide_index=True)
 
 if "upload_data_button" not in st.session_state:
@@ -23,15 +24,18 @@ uploaded_file = None
 if st.button("Use Sample Data"):
     st.session_state["sample_data_button"] = not st.session_state["sample_data_button"]
     if st.session_state["upload_data_button"]:
-        st.session_state["upload_data_button"] = not st.session_state["upload_data_button"]
+        st.session_state["upload_data_button"] = not st.session_state[
+            "upload_data_button"
+        ]
 
 if st.button("Upload Data"):
     st.session_state["upload_data_button"] = not st.session_state["upload_data_button"]
     if st.session_state["sample_data_button"]:
-        st.session_state["sample_data_button"] = not st.session_state["sample_data_button"]
-    
+        st.session_state["sample_data_button"] = not st.session_state[
+            "sample_data_button"
+        ]
+
 if st.session_state["sample_data_button"]:
-    
     summary_df = utils.summary(sample_data)
 
     st.subheader("*Data Summary*")
@@ -52,10 +56,10 @@ if st.session_state["sample_data_button"]:
         },
         hide_index=True,
     )
-        
+
     if st.button("Exploratory Data Analysis"):
         st.switch_page("eda.py")
-    
+
 if st.session_state["upload_data_button"]:
     uploaded_file = st.file_uploader(
         label="Upload Data", type=["csv", "xlsx"], label_visibility="hidden"
@@ -66,7 +70,7 @@ if st.session_state["upload_data_button"]:
             df = pd.read_csv(uploaded_file)
         elif uploaded_file.name.endswith(".xlsx"):
             df = pd.read_excel(uploaded_file)
-            
+
         summary_df = utils.summary(df)
 
         st.subheader("*Data Summary*")
@@ -87,12 +91,9 @@ if st.session_state["upload_data_button"]:
             },
             hide_index=True,
         )
-        
+
     if st.button("Exploratory Data Analysis"):
         st.switch_page("eda.py")
-    
-    
-
 
 
 # Print the session state to make it easier to see what's happening

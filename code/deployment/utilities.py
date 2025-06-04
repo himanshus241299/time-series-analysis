@@ -13,7 +13,10 @@ def summary(df):
     summary_df = summary_df[1:]
 
     summary_df["Values"] = summary_df.iloc[:, 3:].values.tolist()
+    summary_df["#Observations"] = summary_df["Values"].apply(
+        lambda x: len(x) if isinstance(x, list) else 0
+    )
     summary_df["Select"] = True
     return summary_df[
-        ["Select", "Macro Variable", "Description", "Time Range", "Values"]
+        ["Select", "Macro Variable", "Description", "Time Range", "#Observations","Values"]
     ]
